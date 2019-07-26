@@ -2,16 +2,18 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Chat Bot</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../lib/font-awesome/css/all.css">
+	<script src="jquery.js"></script>
 </head>
 <body>
 
 	<div class="container">
 		
 		<div class="chat-box">
-			<div class="header">
+			<div class="chat-header">
 				<div class="avatar">
 					<div class="avatar-img">	
 						<img src="man-1.svg" alt="">
@@ -25,39 +27,89 @@
 				</div>
 			</div>
 
-			<div class="body">
+			<div class="chat-body" id="chat-body">
+
 				<div class="bot-chat chat">
 					<div class="chat-avatar">
 						<img src="man-1.svg" alt="" class="chat-img">
 					</div>
-					
+						
 					<div class="bubble-message">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non nesciunt, commodi ipsam maxime iste repellat, eos cupiditate, obcaecati dolores optio maiores perspiciatis ad natus? Ullam dignissimos assumenda recusandae atque fugit!</p>
+						<p>Hello there, how may I help you?</p>
 					</div>
 				</div>
 
-				<div class="user-chat chat">
+				<!-- <div class="user-chat chat">
 					<div class="bubble-message">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis sit voluptate, illum nobis libero molestiae. Quisquam earum, harum accusamus quibusdam odit fugit recusandae repellendus quasi, rerum? Eaque deserunt, facere quis.</p>
+						<p>Lorem ipsum dolor</p>
 					</div>
-
 					<div class="chat-avatar">
 						<img src="girl.svg" alt="" class="chat-img">
 					</div>
-				</div>
-
-
+				</div>	
+ -->
 			</div>
 
-			<div class="footer">
+			<div class="chat-footer">
 				<div class="options">
-					
+					<div class="user-input">
+						<input type="text" id="user-msg-input"><div class="send-btn"><i class="far fa-paper-plane fa-lg"></i></div>
+					</div>
 				</div>
 			</div>
 		</div>
-
-
 	</div>
+	<script>
+	var chatBody = $('#chat-body');
+	var userMsgInput = document.querySelector('#user-msg-input');
+
+	function chatScrollTop(){
+		chatBody.scrollTop(chatBody.clientHeight);
+		console.log(chatBody.scrollTop());
+	}
+
+	chatBody.on('click', () => {
+		chatScrollTop();
+	});
+
+	$('#inputcontainer').on('click', function () {
+    	$('#messagewindow').animate({
+        scrollTop: $('#messagewindow')[0].scrollHeight}, 1000);
+    });
+
+    function scrollChat(){
+    	chatBody.animate({
+        scrollTop: chatBody[0].scrollHeight}, 1);
+    }
+
+	userMsgInput.addEventListener('keyup', function(e){
+		if(e.which == 13){
+			let botResponse = $(`<div class="bot-chat chat">
+									<div class="chat-avatar">
+										<img src="man-1.svg" alt="" class="chat-img">
+									</div>
+						
+									<div class="bubble-message">
+										<p>This is a default response.</p>
+									</div>
+								</div>`);
+
+			let msgInput = $(`<div class="user-chat chat">
+								<div class="bubble-message">
+									<p>${userMsgInput.value}</p>
+								</div>
+								<div class="chat-avatar">
+									<img src="girl.svg" alt="" class="chat-img">
+								</div>
+							</div>`);
+			userMsgInput.value = '';
+			chatBody.append(msgInput);
+			scrollChat();
+			setTimeout(() => {chatBody.append(botResponse); scrollChat();}, 500);
+			
+		}
+	});
+</script>
 	
 </body>
 </html>
