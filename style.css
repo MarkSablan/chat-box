@@ -258,7 +258,7 @@ img{
 }
 
 .chat-box .chat-footer .user-input  #user-msg-input{
-	width: 320px;
+	width: 350px;
 	font-size: 12px;
 	padding: 10px;
 	border: none;
@@ -283,4 +283,10 @@ img{
 .chat-box .chat-footer .user-input .send-btn:hover i{
 	color: #72c3e5;
 	transition: 0.5s;
+}
+
+@media(max-width: 550px){
+	.chat-box .chat-footer .user-input  #user-msg-input{
+		width: 200px!important;
+	}
 }
