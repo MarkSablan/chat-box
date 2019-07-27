@@ -51,65 +51,52 @@
 			</div>
 
 			<div class="chat-footer">
-				<div class="options">
+				<!-- <div class="options">
 					<div class="user-input">
-						<input type="text" id="user-msg-input"><div class="send-btn"><i class="far fa-paper-plane fa-lg"></i></div>
+						<input type="text" id="user-msg-input" placeholder="Write your message . . ."><div class="send-btn"><i class="far fa-paper-plane fa-lg"></i></div>
 					</div>
+				</div> -->
+
+				<div class="chat-options">
+					<div class="option-handle"><span class="line"></span></div>
+					<ul class="chat-option-list">
+						<li class="chat-option"><p>Can I ask for the nearest available date for a booking?</p></li>
+						<div class="chat-option-line"></div>
+						<li class="chat-option"><p>Location</p></li>
+						<div class="chat-option-line"></div>
+						<li class="chat-option"><p>Pricelist</p></li>
+						<div class="chat-option-line"></div>
+						<li class="chat-option"><p>Inclusions</p></li>
+						<div class="chat-option-line"></div>
+						<li class="chat-option"><p>Other Offers</p></li>
+						<div class="chat-option-line"></div>
+						<li class="chat-option"><p>Accepted Events</p></li>
+						<div class="chat-option-line"></div>
+						<li class="chat-option"><p>Rules</p></li>
+						<div class="chat-option-line"></div>
+						<li class="chat-option"><p>Corkages</p></li>
+						<div class="chat-option-line"></div>
+						<li class="chat-option"><p>Is there a parking area?</p></li>
+						<div class="chat-option-line"></div>
+						<li class="chat-option"><p>Do you allow refunds?</p></li>
+						<div class="chat-option-line"></div>
+						<li class="chat-option"><p>Do you allow rescheduling?</p></li>
+					</ul>
 				</div>
 			</div>
 		</div>
+		<!-- <script 
+		    defer="true" type="text/javascript" 
+		    botId="5d3b0ed740a0d3eb2dbbfc34" 
+		    class="botcopy-embedder-d7lcfheammjct" 
+		    id="botcopy-embedder-d7lcfheammjct"> 
+		    var s = document.createElement('script'); 
+		    s.type = 'text/javascript'; s.async = true; 
+		    s.src = 'https://d7lcfheammjct.cloudfront.net/js/injection.js'; 
+		    var embedder = document.getElementById('botcopy-embedder-d7lcfheammjct'); 
+		    embedder.parentNode.insertBefore(s, embedder); 
+		</script> -->
 	</div>
-	<script>
-	var chatBody = $('#chat-body');
-	var userMsgInput = document.querySelector('#user-msg-input');
-
-	function chatScrollTop(){
-		chatBody.scrollTop(chatBody.clientHeight);
-		console.log(chatBody.scrollTop());
-	}
-
-	chatBody.on('click', () => {
-		chatScrollTop();
-	});
-
-	$('#inputcontainer').on('click', function () {
-    	$('#messagewindow').animate({
-        scrollTop: $('#messagewindow')[0].scrollHeight}, 1000);
-    });
-
-    function scrollChat(){
-    	chatBody.animate({
-        scrollTop: chatBody[0].scrollHeight}, 1);
-    }
-
-	userMsgInput.addEventListener('keyup', function(e){
-		if(e.which == 13){
-			let botResponse = $(`<div class="bot-chat chat">
-									<div class="chat-avatar">
-										<img src="man-1.svg" alt="" class="chat-img">
-									</div>
-						
-									<div class="bubble-message">
-										<p>This is a default response.</p>
-									</div>
-								</div>`);
-
-			let msgInput = $(`<div class="user-chat chat">
-								<div class="bubble-message">
-									<p>${userMsgInput.value}</p>
-								</div>
-								<div class="chat-avatar">
-									<img src="girl.svg" alt="" class="chat-img">
-								</div>
-							</div>`);
-			userMsgInput.value = '';
-			chatBody.append(msgInput);
-			scrollChat();
-			setTimeout(() => {chatBody.append(botResponse); scrollChat();}, 500);
-			
-		}
-	});
-</script>
-	
+	<script src="script.js"></script>
 </body>
 </html>
